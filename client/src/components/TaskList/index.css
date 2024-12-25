@@ -1,0 +1,8 @@
+/* Add this CSS to your stylesheet (e.g., index.css or TaskList.css) */
+
+/* Highlight overdue tasks in red */
+.overdue-task {
+    background-color: red;
+    color: white;
+  }
+  
