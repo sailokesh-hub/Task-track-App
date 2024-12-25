@@ -30,4 +30,4 @@ Before setting up the project, make sure you have the following installed:
 Clone this repository to your local machine:
 
 ```bash
-git clone [https://github.com/sailokesh-hub/Task-track-App]
+git clone https://github.com/sailokesh-hub/Task-track-App
