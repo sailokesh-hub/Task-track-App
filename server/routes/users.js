@@ -31,6 +31,7 @@ router.post('/register', async (req, res) => {
 
 // User login
 router.post('/login', async (req, res) => {
+  console.log("success")
     try {
       const { username, password } = req.body;
   

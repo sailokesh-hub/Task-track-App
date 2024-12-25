@@ -43,10 +43,10 @@ const TaskModal = ({ show, onHide, task, refreshTasks, token }) => {
         };
       if (task) {
         // Update existing task
-        await axios.put(`http://localhost:3001/tasks/${task._id}`, newTask, config);
+        await axios.put(`https://task-track-app.onrender.com/tasks/${task._id}`, newTask, config);
       } else {
         // Add new task
-        await axios.post('http://localhost:3001/tasks', newTask, config);
+        await axios.post('https://task-track-app.onrender.com/tasks', newTask, config);
       }
       refreshTasks(); // Refresh task list after adding or editing
       onHide(); // Close modal

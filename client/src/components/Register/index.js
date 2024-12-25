@@ -31,7 +31,7 @@ const UserRegistration = ({ history }) => {
       return;
     }
 
-    const apiUrl = "http://localhost:3001/register"; // replace with your API URL for registration
+    const apiUrl = "https://task-track-app.onrender.com/register"; // replace with your API URL for registration
     const userDetails = { username, password, email };
 
     const options = {

@@ -16,7 +16,7 @@ const TaskList = ({ tasks, setShowModal, setCurrentTask, refreshTasks }) => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       setLoading(true); // Show loading state during deletion
       try {
-        await axios.delete(`http://localhost:3001/tasks/${id}`); // Delete task
+        await axios.delete(`https://task-track-app.onrender.com/tasks/${id}`); // Delete task
         refreshTasks(); // Refresh task list after deleting
       } catch (err) {
         setError('Error deleting task. Please try again later.');

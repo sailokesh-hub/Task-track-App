@@ -18,7 +18,7 @@ const HomePage = () => {
   const fetchTasks = async () => {
     try {
       
-      const response = await axios.get("http://localhost:3001/tasks", {
+      const response = await axios.get("https://task-track-app.onrender.com/tasks", {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
