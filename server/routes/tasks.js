@@ -4,22 +4,22 @@ const router = express.Router();
 const Task = require('../models/Task');
 const authenticate = require('../middleware/verifyToken');
 
-// Get all tasks
-router.get('/tasks', async (req, res) => {
+router.get('/tasks', authenticate, async (req, res) => {
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find({ userId: req.user.userId });
     res.status(200).json(tasks);
   } catch (err) {
     res.status(500).json({ message: 'Server Error' });
   }
 });
 
+
 // Create a new task
-router.post('/tasks', async (req, res) => {
+router.post('/tasks', authenticate, async (req, res) => {
   try {
     const { taskName, description, dueDate, status, priority } = req.body;
     console.log(req.body)
-    const newTask = new Task({ taskName, description, dueDate, status, priority });
+    const newTask = new Task({ taskName, description, dueDate, status, priority, userId: req.user.userId });
     await newTask.save();
     res.status(201).json(newTask);
   } catch (err) {
@@ -28,7 +28,7 @@ router.post('/tasks', async (req, res) => {
 });
 
 // Update a task
-router.put('/tasks/:id', async (req, res) => {
+router.put('/tasks/:id', authenticate, async (req, res) => {
   try {
     const { taskName, description, dueDate, status, priority } = req.body;
     const task = await Task.findByIdAndUpdate(
@@ -43,7 +43,7 @@ router.put('/tasks/:id', async (req, res) => {
 });
 
 // Delete a task
-router.delete('/tasks/:id', async (req, res) => {
+router.delete('/tasks/:id', authenticate, async (req, res) => {
   try {
     await Task.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: 'Task deleted successfully' });

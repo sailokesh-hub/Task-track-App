@@ -87,6 +87,7 @@ const filteredTasks = tasks.filter((task) =>
               setShowModal={setShowModal}
               setCurrentTask={setCurrentTask}
               refreshTasks={fetchTasks}
+              token={token}
             />
           </div>
         </Col>

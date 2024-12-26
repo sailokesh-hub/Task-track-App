@@ -34,6 +34,7 @@ const TaskModal = ({ show, onHide, task, refreshTasks, token }) => {
     setError('');
 
     const newTask = { taskName, description, dueDate, status, priority };
+    console.log(token)
 
     try {
       const config = {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Dropdown, Table, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
-const TaskList = ({ tasks, setShowModal, setCurrentTask, refreshTasks }) => {
+const TaskList = ({ tasks, setShowModal, setCurrentTask, refreshTasks, token }) => {
   const [statusFilter, setStatusFilter] = useState('All'); // Filter state
   const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState(''); // Error state
@@ -13,10 +13,15 @@ const TaskList = ({ tasks, setShowModal, setCurrentTask, refreshTasks }) => {
   };
 
   const handleDeleteTask = async (id) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`, // Include the token in the headers
+      },
+    };
     if (window.confirm('Are you sure you want to delete this task?')) {
       setLoading(true); // Show loading state during deletion
       try {
-        await axios.delete(`https://task-track-app.onrender.com/tasks/${id}`); // Delete task
+        await axios.delete(`https://task-track-app.onrender.com/tasks/${id}`, config); // Delete task
         refreshTasks(); // Refresh task list after deleting
       } catch (err) {
         setError('Error deleting task. Please try again later.');
