@@ -31,7 +31,7 @@ const TaskList = ({ tasks, setShowModal, setCurrentTask, refreshTasks, token }) 
     }
   };
 
-  const isOverdue = (dueDate) => new Date(dueDate) < new Date();
+  const isOverdue = (dueDate) => new Date(dueDate) <= new Date();
 
   const getRowStyle = (dueDate) => {
     return isOverdue(dueDate) ? true : false;
