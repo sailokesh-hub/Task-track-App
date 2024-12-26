@@ -29,7 +29,7 @@ const TaskList = ({ tasks, setShowModal, setCurrentTask, refreshTasks }) => {
   const isOverdue = (dueDate) => new Date(dueDate) < new Date();
 
   const getRowStyle = (dueDate) => {
-    return isOverdue(dueDate) ? "bg-red" : "";
+    return isOverdue(dueDate) ? true : false;
   };
 
   return (
@@ -66,7 +66,13 @@ const TaskList = ({ tasks, setShowModal, setCurrentTask, refreshTasks }) => {
             {tasks
               .filter(task => statusFilter === 'All' || task.status === statusFilter) // Apply filter
               .map((task) => (
-                <tr key={task._id} >
+                <tr key={task._id} style={{
+                  border: getRowStyle(task.dueDate) ? "2px solid red" : "1px solid gray",
+                  backgroundColor: getRowStyle(task.dueDate) ? "#f54949" : "white",
+                  padding: "10px",
+                  margin: "10px 0",
+                  borderRadius: "5px",
+                }}>
                   <td>{task.taskName}</td>
                   <td>{task.description}</td>
                   <td>{new Date(task.dueDate).toLocaleDateString()}</td>
