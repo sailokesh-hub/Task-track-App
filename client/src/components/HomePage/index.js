@@ -45,7 +45,7 @@ const HomePage = () => {
   // Filter tasks based on search query
 // Filter tasks based on search query
 const filteredTasks = tasks.filter((task) =>
-  (task.task?.toLowerCase().includes(searchQuery.toLowerCase())) || 
+  (task.taskName?.toLowerCase().includes(searchQuery.toLowerCase())) || 
   (task.description?.toLowerCase().includes(searchQuery.toLowerCase()))
 );
 
