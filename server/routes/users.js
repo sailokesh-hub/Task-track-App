@@ -60,6 +60,7 @@ router.post('/login', async (req, res) => {
 
 // Test route to check if the server is running
 router.get('/', (req, res) => {
+    console.log("request recived");
   res.send('Server is running');
 });
 
